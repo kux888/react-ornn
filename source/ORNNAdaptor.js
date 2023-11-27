@@ -38,7 +38,6 @@ const ORNNContainer = forwardRef(({ children }, ref) => {
     }, [])
 
     const hide = useCallback((id) => {
-        debugger;
         setVisible(setMultiState({ [id]: false }));
     }, [])
 
