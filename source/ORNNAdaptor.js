@@ -31,6 +31,13 @@ const ORNNContainer = forwardRef(({ children }, ref) => {
         });
     }, [])
 
+    const resetState = useCallback((id) => {
+        setCompNextProps(compPrevProps => {
+            const next = { ...compPrevProps, [id]: {} };
+            return next;
+        });
+    }, [])
+
     const show = useCallback((id, handler, nextProps) => {
         setVisible(setMultiState({ [id]: true }));
         setPromiseHandler(setMultiState({ [id]: handler }));
@@ -45,6 +52,7 @@ const ORNNContainer = forwardRef(({ children }, ref) => {
         show,
         hide,
         updateState,
+        resetState,
     }));
 
     return Children.map(children, child => {
@@ -91,16 +99,21 @@ const ORNNAdaptor = props => {
                     resolve: (data) => {
                         resolve(data);
                         ref?.current?.hide(_id);
+                        memorizedPropsBeforeShow.current[_id] = {};
                         setTimeout(() => {
+                            ref?.current?.resetState(_id);
                             setIdStack(stackPop);
-                        }, 100)
+                        }, 100);
                     },
                     reject: (error) => {
                         reject(error);
                         ref?.current?.hide(_id);
+                        memorizedPropsBeforeShow.current[_id] = {};
                         setTimeout(() => {
+                            ref?.current?.resetState(_id);
                             setIdStack(stackPop);
                         }, 100)
+
                     }
                 },
                 {...(memorizedPropsBeforeShow.current[_id] || {}), ...(_uiProps || {})}
