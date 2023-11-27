@@ -5,7 +5,7 @@ const useORNN = (id, deps = {}) => {
     const { show, updateOrMemoProps } = useContext(ORNNContext);
 
     const _show = useCallback((nextProps) => {
-        show(id, nextProps)
+        return show(id, nextProps)
     }, [id]);
     
     useEffect(() => {
