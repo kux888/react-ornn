@@ -145,7 +145,7 @@ const ORNNAdaptor = props => {
                     (idStack.length === 0)
                         ? null
                         : idStack.map(id => {
-                            const UIComponent = views[id] || EmptyUI;
+                            const UIComponent = views[id.split("%")[0]] || EmptyUI;
                             return <UIComponent key={id} token={id} />
                         })
                 }
