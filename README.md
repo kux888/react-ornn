@@ -78,7 +78,7 @@ export default App;
 // MyModal.js
 import React from "react";
 
-const MyModal = ({ token, visible, promiseHandler, /* 其他属性 */ }) => {
+const MyModal = ({ visible, promiseHandler, /* 其他属性 */ }) => {
   if (!visible) return null;
 
   const handleConfirm = () => {
@@ -191,36 +191,11 @@ const show = useORNN(id, deps);
 
 - 一个函数，调用时返回一个 `Promise`。当视图调用 `resolve` 时，`Promise` 会被解决；调用 `reject` 时，`Promise` 会被拒绝。
 
-#### 示例
-
-```jsx
-import React from "react";
-import useORNN from "react-ornn";
-
-const MyComponent = () => {
-  const showModal = useORNN("modal");
-
-  const handleOpenModal = async () => {
-    try {
-      const result = await showModal({ /* 传递给 MyModal 的属性 */ });
-      // 处理确认结果
-    } catch (error) {
-      // 处理取消操作
-    }
-  };
-
-  return (
-    <button onClick={handleOpenModal}>打开模态框</button>
-  );
-};
-
-export default MyComponent;
-```
-
 ## 许可证
 
 本项目基于 [MIT 许可证](LICENSE) 许可。
 
+## 背景拓展
 
 结合《英雄联盟》中英雄奥恩（Ornn）的被动技能“锻造大师”（Forger of Legends），该技能能够为队友提供无需返回基地的高级装备，从而提升团队整体作战能力。下面将分析 `react-ornn` 代码库的作用，并将其与奥恩的被动技能进行类比，以更好地理解其在开发过程中的价值。
 

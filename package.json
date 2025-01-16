@@ -1,6 +1,6 @@
 {
   "name": "react-ornn",
-  "version": "1.1.7",
+  "version": "1.1.9",
   "description": "Implementing asynchronous UI with algebraic effects in React.",
   "main": "dist/bundle.js",
   "type": "module",
